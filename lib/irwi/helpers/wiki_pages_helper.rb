@@ -129,7 +129,7 @@ module Irwi::Helpers::WikiPagesHelper
     page.attachments.each do |attachment|
       concat image_tag(attachment.wiki_page_attachment.url(:thumb))
       concat "Attachment_#{attachment.id}"
-      concat link_to(wt('Remove'), wiki_remove_page_attachment_path(attachment.id), :method => :delete)
+      concat button_to(wt('Remove'), wiki_remove_page_attachment_path(attachment.id), :method => :delete, :remote=>true)
     end
 
     form_for(Irwi.config.page_attachment_class.new,

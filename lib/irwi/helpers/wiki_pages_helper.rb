@@ -101,7 +101,7 @@ module Irwi::Helpers::WikiPagesHelper
   end
 
   def wiki_page_style
-    render :partial => "#{template_dir '_wiki_page_style'}/wiki_page_style"
+    ""#render :partial => "#{template_dir '_wiki_page_style'}/wiki_page_style"
   end
 
   def wiki_page_info(page = nil)

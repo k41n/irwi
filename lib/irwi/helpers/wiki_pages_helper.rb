@@ -132,13 +132,12 @@ module Irwi::Helpers::WikiPagesHelper
       concat link_to(wt('Remove'), wiki_remove_page_attachment_path(attachment.id), :method => :delete)
     end
 
-    form_for(:wiki_page_attachment,
-             Irwi.config.page_attachment_class.new,
-             :url => wiki_add_page_attachment_path(@page),
-             :html => { :multipart => true }) do |form|
+    form_for(Irwi.config.page_attachment_class.new,
+             {:as => :wiki_page_attachment, :url => wiki_add_page_attachment_path(@page),
+             :html => { :multipart => true } }) do |form|
       concat form.file_field :wiki_page_attachment
       concat form.hidden_field :page_id, :value => @page.id
-      concat form.submit 'Add Attachment'
+      concat form.submit I18n.t('irwi.add_attachment')
     end
   end
 

@@ -2,10 +2,10 @@
 
 <h1><%=h @page.title %></h1>
   
-<%= wiki_page_info %>
+<%#= wiki_page_info %>
 <%= wiki_page_actions %>
   
 <div class="wiki_content">
-  <%=wiki_content @page.content %>
+  <%=wiki_content @page.content.gsub(/Attachment_([\d]+)/) {|x| attachment_id = x.scan(/_(\d+)/)[0][0]; WikiPageAttachment.find(attachment_id).wiki_page_attachment.url} %>
 </div>
 

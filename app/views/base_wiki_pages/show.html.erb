@@ -6,6 +6,6 @@
 <%= wiki_page_actions %>
   
 <div class="wiki_content">
-  <%=wiki_content @page.content.gsub(/Attachment_([\d]+)/) {|x| attachment_id = x.scan(/_(\d+)/)[0][0]; WikiPageAttachment.find(attachment_id).wiki_page_attachment.url} %>
+  <%=wiki_content @page.content.gsub(/Attachment_([\d]+)/) {|x| attachment_id = x.scan(/_(\d+)/)[0][0]; WikiPageAttachment.find_by_id(arrachment_id).nil? ? "Attachment_#{attachment_id}" : WikiPageAttachment.find(attachment_id).wiki_page_attachment.url} %>
 </div>
 

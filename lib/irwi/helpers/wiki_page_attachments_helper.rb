@@ -4,7 +4,7 @@ module Irwi::Helpers::WikiPageAttachmentsHelper
 
   def wiki_add_page_attachment_path(page)
     page = page.path if page.respond_to? :path
-    url_for(:action => 'add_attachment', :path => page)
+    url_for(:action => 'add_attachment', :path => page, :protocol=>(Rails.env=='production') ? "https://" : "http://")
   end
 
   def wiki_remove_page_attachment_path(attachment_id)

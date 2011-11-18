@@ -8,7 +8,7 @@ module Irwi::Helpers::WikiPageAttachmentsHelper
   end
 
   def wiki_remove_page_attachment_path(attachment_id)
-    url_for(:action => 'remove_attachment', :attachment_id => attachment_id)
+    url_for(:action => 'remove_attachment', :attachment_id => attachment_id, :protocol=>(Rails.env=='production') ? "https://" : "http://")
   end
 
   def wiki_show_attachments(str)

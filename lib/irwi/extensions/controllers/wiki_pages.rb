@@ -77,7 +77,7 @@ module Irwi::Extensions::Controllers::WikiPages
       @page.creator = @current_user if @page.new_record? # Assign it's creator if it's new page
 
       if !params[:preview] && (params[:cancel] || @page.save)
-        redirect_to url_for( :action => :show, :path => @page.path.split('/'), :protocol=>(Rails.env=='production') ? "https://" : "http://" ) # redirect to new page's path (if it changed)
+        redirect_to url_for( :action => :show, :path => @page.path.split('/'), :protocol=>(Rails.env=='production') ? "http://" : "http://" ) # redirect to new page's path (if it changed)
       else
         render_template 'edit'
       end
